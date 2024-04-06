@@ -22,7 +22,7 @@ namespace docxTask.Services
 
                 string currentQuestion = null;
                 List<string> currentAnswers = null;
-
+                int count = 0;
                 foreach (var paragraph in body.Elements<Paragraph>())
                 {
                     string text = paragraph.InnerText.Trim();
@@ -41,8 +41,9 @@ namespace docxTask.Services
                         }
 
                         // yangi savol tuzish
-                        currentQuestion = text;
+                        currentQuestion = text[3..];
                         currentAnswers = new List<string>();
+                        count++;
                     }
                     else if (!string.IsNullOrWhiteSpace(text))
                     {
